@@ -8,6 +8,6 @@ USER root
 RUN APPS=$(ls ../_apps) && mv ../_apps/* ../apps && rm -rf ../_apps && \
     for a in $APPS; do \
     install-app $a; \
-    done && exit 1
+    done
 
 USER frappe
