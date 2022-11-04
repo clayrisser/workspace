@@ -1,0 +1,5 @@
+!/.mkpm/.bootstrap.mk
+!/.mkpm/.cache.tar.gz
+**/.mkpm/*
+.env
+.mkpm/*
