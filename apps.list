@@ -1,2 +1,12 @@
+ecommerce_integrations=https://github.com/frappe/ecommerce_integrations.git#v1.13.0
+erpnext_shipping=https://github.com/frappe/erpnext-shipping.git#master
+frappedesk=https://github.com/frappe/desk#0.5.4
+gameplan=https://github.com/frappe/gameplan.git#main
 hrms=https://github.com/frappe/hrms.git#v1.0.0
+india_compliance=https://github.com/resilient-tech/india-compliance.git#v14.0.2
+insights=https://github.com/frappe/insights.git#v0.1.0-beta
+lms=https://github.com/frappe/lms.git#main
+posawesome=https://github.com/yrestom/POS-Awesome.git#Version-3-4-0
+storage_integration=https://github.com/frappe/storage_integration.git#master
+whitelabel=https://github.com/bhavesh95863/whitelabel.git#master
 wiki=https://github.com/frappe/wiki.git#v1.0.0
