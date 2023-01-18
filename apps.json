@@ -1,0 +1,58 @@
+[
+  {
+    "url": "https://github.com/frappe/payments",
+    "branch": "develop"
+  },
+  {
+    "url": "https://github.com/frappe/erpnext",
+    "branch": "v14.13.0"
+  },
+  {
+    "url": "https://github.com/frappe/ecommerce_integrations.git",
+    "branch": "v1.13.0"
+  },
+  {
+    "url": "https://github.com/frappe/erpnext-shipping.git",
+    "branch": "master"
+  },
+  {
+    "url": "https://github.com/frappe/desk",
+    "branch": "0.5.4"
+  },
+  {
+    "url": "https://github.com/frappe/gameplan.git",
+    "branch": "main"
+  },
+  {
+    "url": "https://github.com/frappe/hrms.git",
+    "branch": "v1.0.0"
+  },
+  {
+    "url": "https://github.com/resilient-tech/india-compliance.git",
+    "branch": "v14.1.1"
+  },
+  {
+    "url": "https://github.com/frappe/insights.git",
+    "branch": "v0.1.0-beta"
+  },
+  {
+    "url": "https://github.com/frappe/lms.git",
+    "branch": "main"
+  },
+  {
+    "url": "https://github.com/yrestom/POS-Awesome.git",
+    "branch": "Version-3-4-0"
+  },
+  {
+    "url": "https://github.com/frappe/storage_integration.git",
+    "branch": "master"
+  },
+  {
+    "url": "https://github.com/bhavesh95863/whitelabel.git",
+    "branch": "master"
+  },
+  {
+    "url": "https://github.com/frappe/wiki.git",
+    "branch": "v1.0.0"
+  }
+]

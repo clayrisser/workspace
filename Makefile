@@ -4,32 +4,37 @@ include $(MKPM)/gnu
 include $(MKPM)/dotenv
 include $(MKPM)/envcache
 
-export DOCKER ?= docker
-export BUILDX ?= $(DOCKER) buildx
+FRAPPE_BRANCH ?= version-14
+PYTHON_VERSION ?= 3.10.5
+NODE_VERSION ?= 16.18.0
 
-APPS_LIST=$(shell $(CAT) apps.list)
-APPS=$(shell $(ECHO) $(APPS_LIST) | $(SED) 's|=[^ ]*||g')
+BASE64 ?= base64
+BUILDAH ?= buildah
+export APPS_JSON_BASE64=$(shell $(BASE64) --wrap=0 apps.json)
 
-.PHONY: apps
-apps: $(APPS) ## load apps
-
-.SECONDEXPANSION:
-.PHONY: $(APPS)
-$(APPS): apps/$$@/setup.py
-$(patsubst %,apps/%/setup.py,$(APPS)):
-	@BRANCH=$(call repo_branch,$(call app_repo,$(patsubst apps/%/setup.py,%,$@))) && \
-		$(GIT) clone --depth 1 \
-		$$([ "$$BRANCH" = "" ] || $(ECHO) --branch $${BRANCH}) \
-		$(call repo_base,$(call app_repo,$(patsubst apps/%/setup.py,%,$@))) \
-		apps/$(patsubst apps/%/setup.py,%,$@)
+.PHONY: submodules
+ifeq (,$(shell $(LS) .git/modules $(NOFAIL)))
+submodules:
+	@git submodule update --init --recursive
+else
+submodules: ;
+endif
 
 .PHONY: build
-build: apps ## build images
-	@$(BUILDX) bake
+build: submodules ## build images
+	@cd frappe_docker && \
+		$(BUILDAH) build \
+			--build-arg=FRAPPE_PATH=https://github.com/frappe/frappe \
+			--build-arg=FRAPPE_BRANCH=$(FRAPPE_BRANCH) \
+			--build-arg=PYTHON_VERSION=$(PYTHON_VERSION) \
+			--build-arg=NODE_VERSION=$(NODE_VERSION) \
+			--build-arg=APPS_JSON_BASE64=$(APPS_JSON_BASE64) \
+			--tag=$(REGISTRY_NAME):$(VERSION) \
+			--file=images/custom/Containerfile .
 
 .PHONY: push
-push: apps ## push images
-	@$(BUILDX) bake --push
+push: ## push images
+# 	@$(BUILDX) bake --push
 
 .PHONY: purge
 purge: ##
@@ -37,17 +42,5 @@ purge: ##
 	-@$(GIT) clean -fxd
 
 export CACHE_ENVS += \
-
-define app_repo
-$(shell $(ECHO) $(APPS_LIST) | $(SED) 's| |\n|g' | $(GREP) -E '^$1=' | $(SED) 's|^[^=]*=||g')
-endef
-
-define repo_branch
-$(shell $(ECHO) "$1" | $(GREP) -oE '#.+' | $(CUT) -c2-)
-endef
-
-define repo_base
-$(shell $(ECHO) "$1" | $(SED) 's|#.*$$||g')
-endef
 
 endif
