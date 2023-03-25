@@ -19,7 +19,6 @@ PYTHON_VERSION ?= 3.10.10
 NODE_VERSION ?= 16.18.1
 
 BUILDAH ?= buildah
-DOCKER ?= docker
 BASE64_NOWRAP = base64 --wrap=0
 
 .PHONY: submodules
@@ -44,7 +43,7 @@ build: submodules ## build images
 
 .PHONY: push
 push: ## push images
-	@$(DOCKER) push $(REGISTRY_NAME):$(VERSION)
+	@$(BUILDAH) push $(REGISTRY_NAME):$(VERSION)
 
 .PHONY: purge
 purge: ##
@@ -54,4 +53,3 @@ purge: ##
 export CACHE_ENVS += \
 
 endif
-
