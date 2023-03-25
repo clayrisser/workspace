@@ -1,15 +1,15 @@
 [
   {
     "url": "https://github.com/frappe/payments",
-    "branch": "develop"
+    "branch": "version-14"
   },
   {
     "url": "https://github.com/frappe/erpnext",
-    "branch": "v14.13.0"
+    "branch": "v14.19.0"
   },
   {
     "url": "https://github.com/frappe/ecommerce_integrations.git",
-    "branch": "v1.13.0"
+    "branch": "v1.15.3"
   },
   {
     "url": "https://github.com/frappe/erpnext-shipping.git",
@@ -17,7 +17,7 @@
   },
   {
     "url": "https://github.com/frappe/desk",
-    "branch": "0.5.4"
+    "branch": "0.7.0"
   },
   {
     "url": "https://github.com/frappe/gameplan.git",
@@ -25,15 +25,15 @@
   },
   {
     "url": "https://github.com/frappe/hrms.git",
-    "branch": "v1.0.0"
+    "branch": "v14.1.3"
   },
   {
     "url": "https://github.com/resilient-tech/india-compliance.git",
-    "branch": "v14.1.1"
+    "branch": "v14.4.0"
   },
   {
     "url": "https://github.com/frappe/insights.git",
-    "branch": "v0.1.0-beta"
+    "branch": "v0.3.1"
   },
   {
     "url": "https://github.com/frappe/lms.git",
@@ -41,7 +41,7 @@
   },
   {
     "url": "https://github.com/yrestom/POS-Awesome.git",
-    "branch": "Version-3-4-0"
+    "branch": "Version-4-2-0"
   },
   {
     "url": "https://github.com/frappe/storage_integration.git",
@@ -54,5 +54,9 @@
   {
     "url": "https://github.com/frappe/wiki.git",
     "branch": "v1.0.0"
+  },
+  {
+    "url": "https://clayrisser:<GITLAB_TOKEN>@gitlab.com/risserlabs/internal/erpnext/visa-management.git",
+    "branch": "14.0"
   }
 ]

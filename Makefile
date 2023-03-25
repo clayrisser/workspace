@@ -4,13 +4,23 @@ include $(MKPM)/gnu
 include $(MKPM)/dotenv
 include $(MKPM)/envcache
 
-FRAPPE_BRANCH ?= version-14
-PYTHON_VERSION ?= 3.10.5
-NODE_VERSION ?= 16.18.0
+DOCKER_CREDENTIAL_PASS ?= docker-credential-pass
+define gitlab_token
+$(shell GITLAB_TOKEN=$$($(CAT) $(HOME)/.docker/config.json 2>$(NULL) | \
+	$(JQ) -r '.auths["registry.gitlab.com"].auth // ""' | $(BASE64_NOWRAP) -d | $(CUT) -d':' -f2); \
+if [ "$$GITLAB_TOKEN" = "" ]; then \
+	GITLAB_TOKEN=$$($(ECHO) registry.gitlab.com | $(DOCKER_CREDENTIAL_PASS) get | $(JQ) -r '.Secret'); \
+fi; \
+$(ECHO) $$GITLAB_TOKEN)
+endef
 
-BASE64 ?= base64
+FRAPPE_BRANCH ?= version-14
+PYTHON_VERSION ?= 3.10.10
+NODE_VERSION ?= 16.18.1
+
 BUILDAH ?= buildah
-export APPS_JSON_BASE64=$(shell $(BASE64) --wrap=0 apps.json)
+DOCKER ?= docker
+BASE64_NOWRAP = base64 --wrap=0
 
 .PHONY: submodules
 ifeq (,$(shell $(LS) .git/modules $(NOFAIL)))
@@ -28,13 +38,13 @@ build: submodules ## build images
 			--build-arg=FRAPPE_BRANCH=$(FRAPPE_BRANCH) \
 			--build-arg=PYTHON_VERSION=$(PYTHON_VERSION) \
 			--build-arg=NODE_VERSION=$(NODE_VERSION) \
-			--build-arg=APPS_JSON_BASE64=$(APPS_JSON_BASE64) \
+			--build-arg=APPS_JSON_BASE64=$(shell $(SED) 's|<GITLAB_TOKEN>|$(call gitlab_token)|g' apps.json | $(BASE64_NOWRAP)) \
 			--tag=$(REGISTRY_NAME):$(VERSION) \
 			--file=images/custom/Containerfile .
 
 .PHONY: push
 push: ## push images
-# 	@$(BUILDX) bake --push
+	@$(DOCKER) push $(REGISTRY_NAME):$(VERSION)
 
 .PHONY: purge
 purge: ##
@@ -44,3 +54,4 @@ purge: ##
 export CACHE_ENVS += \
 
 endif
+
