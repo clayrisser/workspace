@@ -32,7 +32,7 @@ services:
     image: redis:alpine
 
   frappe:
-    image: registry.gitlab.com/risserlabs/community/images/frappe-bench:latest
+    image: registry.gitlab.com/bitspur/community/frappe/workspace/bench:latest
     command: sleep infinity
     environment:
       - SHELL=/bin/bash

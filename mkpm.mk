@@ -1,4 +1,5 @@
 export MKPM_PACKAGES_DEFAULT := \
+	docker=0.1.1 \
 	gnu=0.0.3 \
 	dotenv=0.0.11 \
 	envcache=0.1.0 \

@@ -41,12 +41,16 @@ build: submodules ## build images
 			--build-arg=PYTHON_VERSION=$(PYTHON_VERSION) \
 			--build-arg=NODE_VERSION=$(NODE_VERSION) \
 			--build-arg=APPS_JSON_BASE64=$(shell $(SED) 's|<GITLAB_TOKEN>|$(call gitlab_token)|g' apps.json | $(BASE64_NOWRAP)) \
-			--tag=$(REGISTRY_NAME):$(VERSION) \
+			--tag=$(REGISTRY):$(VERSION) \
 			--file=images/custom/Containerfile .
+
+.PHONY: bench/%
+bench/%:
+	@$(MAKE) -sC bench $(subst bench/,,$@) ARGS=$(ARGS)
 
 .PHONY: push
 push: ## push images
-	@$(BUILDAH) push $(REGISTRY_NAME):$(VERSION)
+	@$(BUILDAH) push $(REGISTRY):$(VERSION)
 
 .PHONY: clean
 clean: | sudo ##
