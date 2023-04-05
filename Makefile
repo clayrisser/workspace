@@ -1,6 +1,8 @@
 include mkpm.mk
+
 ifneq (,$(MKPM_READY))
 include $(MKPM)/gnu
+include $(MKPM)/mkchain
 include $(MKPM)/dotenv
 include $(MKPM)/envcache
 
@@ -18,6 +20,7 @@ FRAPPE_BRANCH ?= version-14
 PYTHON_VERSION ?= 3.10.10
 NODE_VERSION ?= 16.18.1
 
+DOCKER ?= docker
 BUILDAH ?= buildah
 BASE64_NOWRAP = base64 --wrap=0
 
@@ -45,11 +48,27 @@ build: submodules ## build images
 push: ## push images
 	@$(BUILDAH) push $(REGISTRY_NAME):$(VERSION)
 
+.PHONY: clean
+clean: | sudo ##
+	$(DOCKER) rm -f $$($(DOCKER) ps -aq)
+	$(ECHO) y | $(DOCKER) volume prune
+	$(ECHO) y | $(DOCKER) network prune
+	@$(SUDO) $(RM) -rf development/frappe-bench
+	-@$(MKCACHE_CLEAN)
+	-@$(GIT) clean -fXd \
+		$(MKPM_GIT_CLEAN_FLAGS) \
+		$(NOFAIL)
+
 .PHONY: purge
-purge: ##
+purge: | sudo clean ##
 	-@$(RM) -rf apps
 	-@$(GIT) clean -fxd
 
 export CACHE_ENVS += \
+	DOCKER \
+	BUILDAH \
+	BASE64_NOWRAP
+
+-include $(call actions)
 
 endif

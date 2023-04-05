@@ -6,3 +6,26 @@
 **/.mkpm/*
 !/.mkpm/.cache.tar.gz
 !/.mkpm/.bootstrap.mk
+
+# mounted volume
+sites
+
+development/*
+!development/.vscode
+!development/apps.json
+!development/Makefile
+!development/README.md
+!development/apps-example.json
+!development/installer.sh
+!development/vscode-example/
+
+# Pycharm
+.idea
+
+# VS Code devcontainer
+*.code-workspace
+
+# Python
+*.pyc
+__pycache__
+venv

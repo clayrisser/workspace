@@ -1,0 +1,19 @@
+{
+  "default": [
+    {
+      "name": "frappe",
+      "branch": "develop",
+      "upstream": "git@github.com:frappe/frappe.git"
+    },
+    {
+      "name": "erpnext",
+      "branch": "develop",
+      "upstream": "git@github.com:frappe/erpnext.git"
+    },
+    {
+      "name": "wiki",
+      "upstream": "https://github.com/frappe/wiki.git",
+      "branch": "v1.0.0"
+    }
+  ]
+}
