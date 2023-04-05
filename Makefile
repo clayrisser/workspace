@@ -54,10 +54,10 @@ push: ## push images
 
 .PHONY: clean
 clean: | sudo ##
-	$(DOCKER) rm -f $$($(DOCKER) ps -aq)
-	$(ECHO) y | $(DOCKER) volume prune
-	$(ECHO) y | $(DOCKER) network prune
-	@$(SUDO) $(RM) -rf development/frappe-bench
+	-@$(DOCKER) rm -f $$($(DOCKER) ps -aq)
+	-@$(ECHO) y | $(DOCKER) volume prune
+	-@$(ECHO) y | $(DOCKER) network prune
+	-@$(SUDO) $(RM) -rf development/frappe-bench
 	-@$(MKCACHE_CLEAN)
 	-@$(GIT) clean -fXd \
 		$(MKPM_GIT_CLEAN_FLAGS) \
