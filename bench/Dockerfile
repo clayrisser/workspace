@@ -10,7 +10,8 @@ RUN sudo apt-get update && \
     make \
     openssl \
     patch \
-    rsync && \
+    rsync \
+    supervisor && \
     sudo rm -rf /var/lib/apt/lists/* && \
     sudo curl -Lo /usr/local/bin/yq \
     https://github.com/mikefarah/yq/releases/download/v4.25.2/yq_linux_amd64

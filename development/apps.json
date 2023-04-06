@@ -2,18 +2,48 @@
   "default": [
     {
       "name": "frappe",
-      "branch": "develop",
-      "upstream": "git@github.com:frappe/frappe.git"
+      "branch": "version-14",
+      "upstream": "https://github.com/frappe/frappe"
     },
     {
       "name": "erpnext",
-      "branch": "develop",
-      "upstream": "git@github.com:frappe/erpnext.git"
+      "branch": "version-14",
+      "upstream": "https://github.com/frappe/erpnext"
+    },
+    {
+      "name": "payments",
+      "branch": "version-14",
+      "upstream": "https://github.com/frappe/payments"
+    },
+    {
+      "name": "hrms",
+      "branch": "version-14",
+      "upstream": "https://github.com/frappe/hrms"
+    },
+    {
+      "name": "india-compliance",
+      "branch": "version-14",
+      "upstream": "https://github.com/resilient-tech/india-compliance"
+    },
+    {
+      "name": "go1cms",
+      "branch": "master",
+      "upstream": "https://github.com/TridotsTech/go1cms"
     },
     {
       "name": "wiki",
-      "upstream": "https://github.com/frappe/wiki.git",
-      "branch": "v1.0.0"
+      "branch": "master",
+      "upstream": "https://github.com/frappe/wiki"
+    },
+    {
+      "name": "desk",
+      "branch": "0.8.1",
+      "upstream": "https://github.com/frappe/desk"
+    },
+    {
+      "name": "bitspur",
+      "branch": "develop",
+      "upstream": "git@gitlab.com:bitspur/internal/frappe/bitspur.git"
     }
   ]
 }
