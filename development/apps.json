@@ -21,24 +21,9 @@
       "upstream": "https://github.com/frappe/hrms"
     },
     {
-      "name": "india-compliance",
+      "name": "india_compliance",
       "branch": "version-14",
       "upstream": "https://github.com/resilient-tech/india-compliance"
-    },
-    {
-      "name": "go1cms",
-      "branch": "master",
-      "upstream": "https://github.com/TridotsTech/go1cms"
-    },
-    {
-      "name": "wiki",
-      "branch": "master",
-      "upstream": "https://github.com/frappe/wiki"
-    },
-    {
-      "name": "desk",
-      "branch": "0.8.1",
-      "upstream": "https://github.com/frappe/desk"
     },
     {
       "name": "bitspur",

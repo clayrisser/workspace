@@ -36,10 +36,6 @@
     "branch": "master"
   },
   {
-    "url": "https://github.com/TridotsTech/go1cms",
-    "branch": "master"
-  },
-  {
     "url": "https://github.com/frappe/erpnext-shipping",
     "branch": "master"
   },
@@ -58,5 +54,9 @@
   {
     "url": "https://clayrisser:<GITLAB_TOKEN>@gitlab.com/risserlabs/internal/erpnext/visa-management",
     "branch": "14.0"
+  },
+  {
+    "url": "https://clayrisser:<GITLAB_TOKEN>@gitlab.com/bitspur/internal/frappe/bitspur",
+    "branch": "develop"
   }
 ]

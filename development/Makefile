@@ -12,7 +12,7 @@ BENCH ?= bench
 .PHONY: install
 install: | frappe-bench/Procfile
 
-frappe-bench/Procfile:
+frappe-bench/Procfile: apps.json
 	@(echo default; echo frappe-bench; echo $(SITE_NAME)) | bash ./installer.sh
 
 -include $(call actions)

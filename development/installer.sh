@@ -124,7 +124,7 @@ init_bench() {
 get_apps_from_upstream() {
   validate_app_exists
   if [ "$is_app_installed" = false ]; then
-    bench get-app --branch "$branch" --resolve-deps "$app" "$upstream" && add_fork
+    bench get-app --branch "$branch" "$app" "$upstream" && add_fork
   fi
 
   if [ "$app" != "frappe" ]; then
