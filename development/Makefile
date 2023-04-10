@@ -10,9 +10,7 @@ SITE_NAME ?= site1.localhost
 BENCH ?= bench
 
 .PHONY: install
-install: | frappe-bench/Procfile
-
-frappe-bench/Procfile: apps.json
+install:
 	@(echo default; echo frappe-bench; echo $(SITE_NAME)) | bash ./installer.sh
 
 -include $(call actions)
