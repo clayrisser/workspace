@@ -12,5 +12,8 @@
     "sqltools",
     "visualstudioexptteam",
     "vscodeintellicode"
-  ]
+  ],
+  "files.associations": {
+    "Mkpmfile": "makefile"
+  }
 }

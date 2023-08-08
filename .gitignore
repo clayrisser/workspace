@@ -1,12 +1,6 @@
 # app
 .env
 
-# mkpm
-.mkpm/*
-**/.mkpm/*
-!/.mkpm/.cache.tar.gz
-!/.mkpm/.bootstrap.mk
-
 # mounted volume
 sites
 
@@ -29,3 +23,6 @@ development/*
 *.pyc
 __pycache__
 venv
+
+# mkpm
+.mkpm/mkpm
