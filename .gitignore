@@ -25,5 +25,4 @@ __pycache__
 venv
 
 # mkpm
-/*.tar.gz
 .mkpm/mkpm
