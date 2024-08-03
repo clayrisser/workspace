@@ -1,9 +1,9 @@
 {
   "packages": {
     "default": {
-      "docker": "0.2.0",
-      "dotenv": "0.0.14",
-      "envcache": "0.3.0",
+      "docker": "0.3.9",
+      "dotenv": "0.1.8",
+      "envcache": "0.3.1",
       "gnu": "0.1.0",
       "mkchain": "0.1.4"
     }
